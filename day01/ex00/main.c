@@ -5,14 +5,16 @@
 
 // F_CPU 16000000UL // Fréquence du CPU en Hz, par exemple 16 MHz
 
-void my_delay_ms(int milliseconds)
+void my_delay_ms(uint32_t milliseconds)
 {
-	for (int i = 0; i < milliseconds; i++)
+	for (uint32_t i = 0; i < milliseconds; i++)
 	{
-		for (int j = 0; j < 2000; j++)
-		{
-			asm volatile("nop");
-		}
+
+		// on le force a rien faire pendant un cycle d'horloge
+		// volatile est utilisé ici pour indiquer au compilateur que l'instruction
+		// ne doit pas être optimisée ou supprimée, même si elle semble ne rien faire d'utile
+		asm volatile("nop");
+		// ;
 	}
 }
 
@@ -24,6 +26,6 @@ int main(void)
 	{
 		PORTB ^= (1 << PB1);
 
-		my_delay_ms(1000);
+		my_delay_ms(800000);
 	}
 }
