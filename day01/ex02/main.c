@@ -32,6 +32,7 @@ void setup()
 	TCCR1B = (1 << WGM13) | (1 << WGM12) | (1 << CS12); // precaler de 256 et fastPWM
 	// Set ICR1 for a period of 1 Hz (f = 16 MHz / (256 * (1 + ICR1)), ICR1 =62500 for ~1Hz)
 	// fpwm = (fCPU/(Prescaler * (1 + ICR1)))
+	// ICR1= (fcpu/ Prescaler*fpwm) -1
 	ICR1 = 62500;
 
 	// Set OCR1A for a duty cycle of 10%

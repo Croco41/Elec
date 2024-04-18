@@ -34,7 +34,7 @@ ISR(INT0_vect)
 	// code qui s'execute quand on appuie sur sw1 (INTO_vect)
 	value++;
 	display_binary(value);
-	_delay_ms(20);
+	_delay_ms(DEBOUNCE_TIME);
 }
 
 ISR(PCINT2_vect)
@@ -47,7 +47,7 @@ ISR(PCINT2_vect)
 		value--;
 		display_binary(value);
 		button_dec = 1;
-		_delay_ms(20);
+		_delay_ms(DEBOUNCE_TIME);
 	}
 	else
 	{

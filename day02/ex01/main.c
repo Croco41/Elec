@@ -22,11 +22,10 @@ void setup()
 	// SETUP TIMER0:
 	TCCR0A |= (1 << WGM01); // modeCTC
 	// TCCR0A = 0x00;						 // Normal mode
-	TCCR0B |= (1 << CS02) | (1 << CS00); // Prescaler 1024
-	// TCCR0B = (1 << WGM13) | (1 << WGM12) | (1 << CS12); // prescaler 256
+	TCCR0B |= (1 << CS02) | (1 << CS00); // Prescaler 1024 // obliger on est sur 8bits
 
-	// TIMSK0 = (1 << TOIE0); // Enable Timer0 overflow interrupt
 	TIMSK0 |= (1 << OCIE0A); // interrupt quand TCNT0 compare OCR0A;
+	// FCPU/1024/200
 	OCR0A = 78;
 }
 

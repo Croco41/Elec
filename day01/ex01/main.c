@@ -21,8 +21,8 @@ void setup()
 	// pour prédiviseur réglé sur division par 256
 	//"CTC" (c'est à dire, en mode "comparaison timer <-> valeur de référence")
 
-	TCNT1 = 0; // Mise du timer 0;
-	// 16 000 000/ 256
+	TCNT1 = 0; // Mise du timer a 0;
+
 	OCR1A = 31250; // Valeur correspondant à 500ms (car 31250 fois 16 µS donne bien 500ms ;
 				   // pour rappel, ces 16 µS proviennent du calcul (16MHz/256/2) ,
 				   // au réglage du prédiviseur du timer1
