@@ -48,7 +48,7 @@ int main(void)
 	while (1)
 	{
 		received_char = uart_rx();
-		uart_tx(received_char);
+		uart_tx(received_char + 1);
 	}
 
 	return 0;

@@ -1,0 +1,39 @@
+ Le protocole I²C (Inter-Integrated Circuit), également appelé IIC ou I2C, est un protocole 
+ de bus de communication série développé à l'origine par Philips Semiconductors (aujourd'hui NXP Semiconductors). 
+ Il est très utilisé pour connecter des microcontrôleurs et des périphériques intégrés (capteurs, écrans, mémoires, etc.) 
+ en raison de sa simplicité et de son efficacité.
+
+Caractéristiques du Protocole I2C
+
+    Deux fils seulement :
+        SDA (Serial Data Line) : C'est la ligne par laquelle transitent les données. 
+		Les données peuvent être envoyées ou reçues sur cette ligne.
+        SCL (Serial Clock Line) : C'est la ligne d'horloge contrôlée par le maître qui synchronise les données sur la ligne SDA.
+
+    Communication Maître-Esclave :
+        Dans le bus I2C, les communications sont toujours initiées par le maître, 
+		qui fournit également le signal d'horloge. Les esclaves répondent aux requêtes du maître.
+        Un bus I2C peut avoir plusieurs maîtres et plusieurs esclaves.
+
+    Adressage :
+        Chaque esclave sur le bus a une adresse unique. Lorsqu'un maître souhaite communiquer avec un esclave, 
+		il envoie d'abord l'adresse de cet esclave pour l'appeler.
+        Les adresses I2C sont le plus souvent de 7 bits, mais il existe aussi des adresses de 10 bits
+		 pour les systèmes nécessitant plus de dispositifs sur le même bus.
+
+    Arbitrage et collision :
+        Plusieurs maîtres peuvent tenter de contrôler le bus en même temps. 
+		Le protocole I2C permet une résolution de collision et garantit que le maître 
+		ayant l'adresse la plus basse gagne le contrôle du bus (arbitrage).
+        Si deux maîtres commencent à communiquer en même temps, le bus détecte l'erreur (collision) et la communication est interrompue.
+
+    Start et Stop Conditions :
+        Condition de Start : Sur le bus I2C, une condition de start est signalée
+		 lorsque la ligne SDA passe de haut à bas pendant que la ligne SCL est haute.
+		  Ceci signale aux périphériques que le maître commence à envoyer des données.
+        Condition de Stop : Une condition de stop est signalée lorsque 
+		la ligne SDA passe de bas à haut pendant que la ligne SCL est haute. Ceci indique que la communication est terminée.
+
+    Débit :
+        Le débit de données standard pour I2C est de 100 Kbps (Standard-mode),
+		 mais il existe également un mode rapide (Fast-mode) à 400 Kbps et un mode haute vitesse (High-speed mode) à 3.4 Mbps.

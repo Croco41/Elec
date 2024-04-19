@@ -58,7 +58,7 @@ void uart_printstr(const char *str)
 	while (!(UCSR0A & (1 << UDRE0)))
 		;
 
-	uint16_t i;
+	uint16_t i = 0;
 	while (str[i])
 	{
 		uart_tx(str[i]);

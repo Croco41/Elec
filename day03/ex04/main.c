@@ -66,7 +66,7 @@ void get_string(char *str, int echo)
 {
 	char c;
 	int i = 0;
-	while ((c = uart_rx()) != ENTER)
+	while ((c = uart_rx()) != ENTER && i < 49)
 	{
 		if (c == BACKSPACE && i > 0)
 		{
