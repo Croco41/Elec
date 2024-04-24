@@ -1,0 +1,36 @@
+    Démarrage : Au démarrage, les deux microcontrôleurs se mettent dans un état d'attente, 
+	prêts à soit initier une communication en tant que maître, soit répondre à une communication en tant qu'esclave.
+
+    Interaction Utilisateur : L'utilisateur appuie sur le bouton SW1 de l'un des microcontrôleurs. 
+	Ce microcontrôleur passe alors dans un état qui va tenter de devenir le maître.
+
+    Négociation : Le microcontrôleur qui détecte l'appui sur le bouton SW1 envoie un signal sur le bus I2C 
+	indiquant qu'il souhaite devenir le maître. S'il n'y a pas de réponse d'un autre 
+	maître dans un délai prédéterminé (ce qui signifie qu'aucun autre microcontrôleur n'a encore pris le rôle de maître), 
+	il assume le rôle de maître.
+
+    Confirmation : Une fois que le rôle de maître est établi, il communique avec l'autre microcontrôleur 
+	pour l'informer qu'il est désormais l'esclave.
+
+    Communication : Le maître peut maintenant initier des communications avec l'esclave selon 
+	les besoins du jeu ou de l'application.
+
+    Changement de Rôle : Si, pour une raison quelconque (par exemple, le maître ne répond pas 
+	ou l'utilisateur appuie sur un bouton de réinitialisation), un changement de rôle est nécessaire, 
+	le processus de négociation peut être répété.
+
+Pour implémenter cela, vous devrez avoir une logique logicielle sur chaque microcontrôleur pour :
+
+    Gérer les entrées utilisateur (appui sur le bouton).
+    Initier une condition de start sur le bus I2C pour tenter de devenir le maître.
+    Vérifier s'il y a déjà un maître sur le bus.
+    Gérer les temporisations pour permettre à un autre microcontrôleur le temps de répondre.
+    Assumer le rôle de maître ou d'esclave selon l'issue de la négociation.
+
+Il est important de gérer correctement les collisions et les conditions de course si les 
+deux microcontrôleurs tentent de devenir maîtres en même temps. Vous pourriez avoir besoin de mécanismes 
+tels que l'arbitrage d'horloge ou un système de temporisation pour résoudre ces situations.
+
+ signal pour indiquer qu'un dispositif souhaite devenir maître est simplement l'envoi 
+ d'une condition de démarrage (start condition) suivie par l'adresse du dispositif esclave 
+ avec le bit de lecture/écriture approprié. 

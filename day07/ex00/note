@@ -1,0 +1,25 @@
+Ajustement à gauche (ADLAR = 1):
+
+    Les 10 bits du résultat ADC sont répartis sur deux registres: ADCH et ADCL.
+    Lorsque le résultat est ajusté à gauche, les deux bits les plus significatifs (MSB) 
+	du résultat ADC sont placés dans les bits les moins significatifs de ADCH, 
+	et les huit bits suivants sont placés dans ADCL.
+        ADCH: [X X X X X X B9 B8 B7 B6]
+        ADCL: [B5 B4 B3 B2 B1 B0 X X]
+
+Lecture sur 8 bits:
+
+    Lorsque ADLAR est à 1, et vous lisez le résultat de l'ADC à partir du registre ADCH, 
+	vous obtenez les 8 bits les plus significatifs du résultat ADC. 
+	Ceci simplifie la lecture lorsque vous n'avez besoin que d'une résolution de 8 bits, 
+	car vous pouvez ignorer ADCL et lire directement ADCH.
+    En résumé, avec ADLAR = 1, ADCH contient les 8 bits les plus significatifs du résultat ADC, 
+	ce qui permet une lecture directe simplifiée sur 8 bits.
+
+Utilité:
+
+    Cette configuration est particulièrement utile lorsque vous n'avez besoin que 
+	d'une résolution de 8 bits pour votre application, car elle permet 
+	de lire directement un seul registre (ADCH) pour obtenir le résultat. 
+	Cela réduit la complexité du code et les cycles de CPU nécessaires pour accéder 
+	aux résultats de l'ADC.
