@@ -186,30 +186,6 @@ void handle_rgb_input()
 	}
 }
 
-// for (uint8_t i = 0; i < 3; ++i) {
-//                 entered_chars[2 * i + 1] -= entered_chars[2 * i + 1] < 'A' ? '0' : 'A' - 10;
-//                 cols[i] = entered_chars[2 * i + 1] << 4;
-//                 entered_chars[2 * i + 2] -= entered_chars[2 * i + 2] < 'A' ? '0' : 'A' - 10;
-//                 cols[i] |= entered_chars[2 * i + 2];
-//             }
-//             set_rgb(cols[0], cols[1], cols[2]);
-//         }
-// Convert hex string to integers
-// 	char val[3] = {0};
-// 	val[0] = buffer[1];
-// 	val[1] = buffer[2];
-// 	uint8_t red = strtol(val, NULL, 16);
-// 	val[0] = buffer[3];
-// 	val[1] = buffer[4];
-// 	uint8_t green = strtol(val, NULL, 16);
-// 	val[0] = buffer[5];
-// 	val[1] = buffer[6];
-// 	uint8_t blue = strtol(val, NULL, 16);
-
-// 	// Set RGB LED
-// 	set_rgb(red, green, blue);
-// }
-
 int main(void)
 {
 	uart_init();

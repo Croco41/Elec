@@ -157,10 +157,13 @@ int main(void)
 	uart_init();
 
 	uint8_t data_to_write[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	uint8_t data_to_write2[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1};
 	uint8_t data_to_read[10] = {0};
 
 	safe_eeprom_write(data_to_write, 0, sizeof(data_to_write));
-	safe_eeprom_read(data_to_read, 0, sizeof(data_to_read));
+	safe_eeprom_write(data_to_write, 0, sizeof(data_to_write2));
+
+	// safe_eeprom_read(data_to_read, 0, sizeof(data_to_read));
 
 	return 0;
 }

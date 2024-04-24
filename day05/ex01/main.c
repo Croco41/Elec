@@ -143,6 +143,8 @@ int main(void)
 					counter++;
 					if (counter == 4)
 						counter = 0;
+					uint8_t counterValue = read_counter(counter);
+					display_binary(counterValue);
 					buttonDecPressedLast = 1;
 				}
 			}
