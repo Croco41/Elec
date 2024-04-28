@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "capteur.h": "c",
+    "timer.h": "c",
+    "uart.h": "c"
+  }
+}
